@@ -1,0 +1,72 @@
+config_schema:
+  type: object
+  required:
+    - confluence_url
+    - confluence_username
+    - confluence_api_token
+    - jira_url
+    - jira_username
+    - jira_api_token
+  properties:
+    confluence_url:
+      type: string
+      description: "Confluence instance URL (e.g., https://your-company.atlassian.net/wiki)"
+    confluence_username:
+      type: string
+      description: "Confluence username/email"
+    confluence_api_token:
+      type: string
+      format: password
+      description: "Confluence API token for authentication"
+    jira_url:
+      type: string
+      description: "Jira instance URL (e.g., https://your-company.atlassian.net)"
+    jira_username:
+      type: string
+      description: "Jira username/email"
+    jira_api_token:
+      type: string
+      format: password
+      description: "Jira API token for authentication"
+    confluence_spaces_filter:
+      type: string
+      description: "Optional: Filter by space keys (e.g., 'DEV,TEAM,DOC')"
+    jira_projects_filter:
+      type: string
+      description: "Optional: Filter by project keys (e.g., 'PROJ,DEV,SUPPORT')"
+    read_only_mode:
+      type: boolean
+      description: "Set to true to disable write operations"
+    mcp_verbose:
+      type: boolean
+      description: "Enable verbose logging"
+server_name: mcp-atlassian
+command: uvx
+args:
+  - mcp-atlassian
+env:
+  - name: CONFLUENCE_URL
+    value: config.confluence_url
+  - name: CONFLUENCE_USERNAME
+    value: config.confluence_username
+  - name: CONFLUENCE_API_TOKEN
+    value: config.confluence_api_token
+  - name: JIRA_URL
+    value: config.jira_url
+  - name: JIRA_USERNAME
+    value: config.jira_username
+  - name: JIRA_API_TOKEN
+    value: config.jira_api_token
+  - name: CONFLUENCE_SPACES_FILTER
+    value: config.confluence_spaces_filter
+  - name: JIRA_PROJECTS_FILTER
+    value: config.jira_projects_filter
+  - name: READ_ONLY_MODE
+    value: config.read_only_mode
+  - name: MCP_VERBOSE
+    value: config.mcp_verbose
+description: "Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). This integration supports both Confluence & Jira Cloud and Server/Data Center deployments, providing comprehensive tools for content management, issue tracking, and workflow automation."
+owner: "Sooperset"
+license: "MIT"
+package: "mcp-atlassian"
+vendor: "Sooperset"

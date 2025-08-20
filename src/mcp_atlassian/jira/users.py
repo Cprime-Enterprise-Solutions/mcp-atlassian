@@ -304,7 +304,7 @@ class UsersMixin(JiraClient):
         Retrieve Jira user profile information by identifier.
 
         Args:
-            identifier (str): User identifier (accountId, username, key, or email).
+            identifier (str): User identifier (user email).
 
         Returns:
             JiraUser: JiraUser model with profile information.
